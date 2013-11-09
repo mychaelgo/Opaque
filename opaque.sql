@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.0.5
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2013 at 03:40 PM
--- Server version: 5.6.11
--- PHP Version: 5.5.1
+-- Generation Time: Nov 09, 2013 at 03:08 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `opaque`
 --
-CREATE DATABASE IF NOT EXISTS `opaque` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `opaque`;
 
 -- --------------------------------------------------------
 
@@ -90,7 +88,15 @@ CREATE TABLE IF NOT EXISTS `tweet` (
   `TotalRetweet` int(11) NOT NULL,
   `TimeStamp` datetime NOT NULL,
   PRIMARY KEY (`TweetId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tweet`
+--
+
+INSERT INTO `tweet` (`TweetId`, `UserId`, `Message`, `GeoCoordinates`, `IsRetweet`, `TotalRetweet`, `TimeStamp`) VALUES
+(1, 'mychaelgo', 'mychaelgo 1', '', 'n', 1, '2013-11-08 00:00:00'),
+(2, 'mychaelgo', 'mychaelgo 2', '', 'n', 0, '2013-11-08 06:00:00');
 
 -- --------------------------------------------------------
 
@@ -104,8 +110,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `AccountType` varchar(50) NOT NULL,
   `TotalFollowing` int(11) NOT NULL,
   `TotalFollowers` int(11) NOT NULL,
+  `Password` int(11) NOT NULL,
   PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`UserId`, `FullName`, `AccountType`, `TotalFollowing`, `TotalFollowers`, `Password`) VALUES
+('hendrik', 'Hendrik Prayogo', '1', 2, 2, 123),
+('mychaelgo', 'Mychael Christian Go', '1', 1, 1, 123);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
