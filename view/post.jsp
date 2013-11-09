@@ -1,5 +1,4 @@
-bbbbbb
-<%=session.getAttribute("username")%>
+<%@include file = "../connect.jsp"%>
 <div class="col-md-8" style="margin-top:15px;padding-left:0px">
 	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
 		<h4><%=session.getAttribute("username")%>'s Post</h4>
@@ -7,23 +6,15 @@ bbbbbb
 	</div>
 	<div style="background-color:white;">
         
-<!--
+
         <%
-		   out.print("saaaaaaaa");
-            String username = session.getAttribute("username");
-            out.print(username);
-		   	String query = "SELECT * FROM tweet";
-            try{
-                ResultSet rs = st.executeQuery(query); 
-                while(rs.next()){
-                    out.print("aa ");
-                }
-                
-            }catch(Exception e){
-                out.print(e);
-            }  
-        %>
--->
+			String username = (String)session.getAttribute("username"); 
+		 	String query = "select * from tweet where UserId='"+username+"'";
+		   	try{
+				rs = st.executeQuery(query); 
+				while(rs.next()){
+		%>
+		
         <!--Post Tempalate -->
 		<div class="col-md-12" style="border-bottom:thin #CFCFCF solid;padding-top:10px;padding-bottom:10px" id="post-1" >
 			<a href="profile.jsp" style="text-decoration:none">
@@ -33,12 +24,12 @@ bbbbbb
 			</a>
 			<div style="float:left;margin-left:10px;width:86%">       
                 <div style="float:left">
-					<a href="profile.jsp" style="text-decoration:none">
+					<a href='index.jsp?p=profile&id=<%=rs.getString("UserId")%>' style="text-decoration:none">
 						<span class="count-profile">
 							Patrick Star
 						</span>
 						<span class="count-type" style="text-transform:inherit">
-							@patrickstar
+							@<%=rs.getString("UserId")%>
 						</span>
 					</a>
 				</div>
@@ -47,7 +38,7 @@ bbbbbb
 				</div>
 				<div style="clear:both"></div>
 				<div>
-					<a href="profile.jsp" style="color:#0099FF">@yennykamal</a>Tante yekaaa, Happy Birthday yaa Wish you all the best!! Sukses kuliah dan sehat selalu.. smoga kumlods terus. Have a gr8 day XD
+				<%=rs.getString("Message")%>
 				</div>
 
 				<div style="float:right;visibility:hidden" id="editpost-1">
@@ -64,7 +55,13 @@ bbbbbb
 		</div>
         <!--Post Tempalate -->
         
-        
+        <%
+		   		}	
+			}catch(Exception e){
+				out.print(e);
+			} 	
+        %>
+
 		<div style="clear:both"></div>
 	</div>
 	<div style="padding:15px;background-color:white">
