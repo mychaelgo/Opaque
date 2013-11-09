@@ -170,7 +170,7 @@
 	<%
 		}else{
 	%>
-		<jsp:include page="<%= tab %>" flush="true"/>
+		<jsp:include page="<%=tab%>" flush="true"/>
 	<%
 		}	
 	%>

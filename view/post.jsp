@@ -1,3 +1,5 @@
+bbbbbb
+<%=session.getAttribute("username")%>
 <div class="col-md-8" style="margin-top:15px;padding-left:0px">
 	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
 		<h4><%=session.getAttribute("username")%>'s Post</h4>
@@ -5,19 +7,23 @@
 	</div>
 	<div style="background-color:white;">
         
+<!--
         <%
+		   out.print("saaaaaaaa");
             String username = session.getAttribute("username");
-            String query = "SELECT * FROM tweet WHERE UserId='"+username+"'";
+            out.print(username);
+		   	String query = "SELECT * FROM tweet";
             try{
-                rs = st.executeQuery(query); 
+                ResultSet rs = st.executeQuery(query); 
                 while(rs.next()){
-                    out.print(rs.getString(UserId));
+                    out.print("aa ");
                 }
                 
             }catch(Exception e){
                 out.print(e);
             }  
         %>
+-->
         <!--Post Tempalate -->
 		<div class="col-md-12" style="border-bottom:thin #CFCFCF solid;padding-top:10px;padding-bottom:10px" id="post-1" >
 			<a href="profile.jsp" style="text-decoration:none">

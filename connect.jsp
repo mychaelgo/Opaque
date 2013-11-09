@@ -5,7 +5,10 @@
         Statement st=null;
         ResultSet rs=null;
 		Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-		connection = DriverManager.getConnection(connectionURL, "root", "AM");
-        st=connection.createStatement();
-	
+		try{
+			connection = DriverManager.getConnection(connectionURL, "root","root");
+			st=connection.createStatement();
+		}catch(Exception e){
+			out.print(e);
+		}
 %>
