@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 06, 2014 at 05:53 AM
+-- Generation Time: Jan 06, 2014 at 11:47 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -45,15 +45,17 @@ CREATE TABLE IF NOT EXISTS `following` (
   `UserId` varchar(50) NOT NULL,
   `FollowingUserId` varchar(50) NOT NULL,
   PRIMARY KEY (`FollowingId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `following`
 --
 
 INSERT INTO `following` (`FollowingId`, `UserId`, `FollowingUserId`) VALUES
-(1, 'A', 'B'),
-(2, 'C', 'B');
+(3, 'mychaelgo', 'kwkw'),
+(4, 'kwkw', 'mychaelgo'),
+(5, 'hendrik', 'kwkw'),
+(6, 'haha', 'kwkw');
 
 -- --------------------------------------------------------
 
@@ -96,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `tweet` (
   `TotalRetweet` int(11) NOT NULL,
   `TimeStamp` datetime NOT NULL,
   PRIMARY KEY (`TweetId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tweet`
@@ -104,7 +106,9 @@ CREATE TABLE IF NOT EXISTS `tweet` (
 
 INSERT INTO `tweet` (`TweetId`, `UserId`, `Message`, `GeoCoordinates`, `IsRetweet`, `TotalRetweet`, `TimeStamp`) VALUES
 (1, 'mychaelgo', 'mychaelgo 1', '', 'n', 1, '2013-11-08 00:00:00'),
-(2, 'mychaelgo', 'mychaelgo 2', '', 'n', 0, '2013-11-08 06:00:00');
+(2, 'mychaelgo', 'mychaelgo 2', '', 'n', 0, '2013-11-08 06:00:00'),
+(3, 'kwkw', 'testing dong', '', 'n', 0, '0000-00-00 00:00:00'),
+(4, 'hendrik', '123456', '', 'n', 0, '2014-01-06 09:37:31');
 
 -- --------------------------------------------------------
 
