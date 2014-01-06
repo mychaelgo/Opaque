@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.5
+-- version 4.1.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 09, 2013 at 03:08 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: Jan 06, 2014 at 11:47 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -45,7 +45,17 @@ CREATE TABLE IF NOT EXISTS `following` (
   `UserId` varchar(50) NOT NULL,
   `FollowingUserId` varchar(50) NOT NULL,
   PRIMARY KEY (`FollowingId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `following`
+--
+
+INSERT INTO `following` (`FollowingId`, `UserId`, `FollowingUserId`) VALUES
+(3, 'mychaelgo', 'kwkw'),
+(4, 'kwkw', 'mychaelgo'),
+(5, 'hendrik', 'kwkw'),
+(6, 'haha', 'kwkw');
 
 -- --------------------------------------------------------
 
@@ -88,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `tweet` (
   `TotalRetweet` int(11) NOT NULL,
   `TimeStamp` datetime NOT NULL,
   PRIMARY KEY (`TweetId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tweet`
@@ -96,7 +106,9 @@ CREATE TABLE IF NOT EXISTS `tweet` (
 
 INSERT INTO `tweet` (`TweetId`, `UserId`, `Message`, `GeoCoordinates`, `IsRetweet`, `TotalRetweet`, `TimeStamp`) VALUES
 (1, 'mychaelgo', 'mychaelgo 1', '', 'n', 1, '2013-11-08 00:00:00'),
-(2, 'mychaelgo', 'mychaelgo 2', '', 'n', 0, '2013-11-08 06:00:00');
+(2, 'mychaelgo', 'mychaelgo 2', '', 'n', 0, '2013-11-08 06:00:00'),
+(3, 'kwkw', 'testing dong', '', 'n', 0, '0000-00-00 00:00:00'),
+(4, 'hendrik', '123456', '', 'n', 0, '2014-01-06 09:37:31');
 
 -- --------------------------------------------------------
 
@@ -107,10 +119,10 @@ INSERT INTO `tweet` (`TweetId`, `UserId`, `Message`, `GeoCoordinates`, `IsRetwee
 CREATE TABLE IF NOT EXISTS `user` (
   `UserId` varchar(50) NOT NULL,
   `FullName` varchar(100) NOT NULL,
-  `AccountType` varchar(50) NOT NULL,
+  `AccountType` int(50) NOT NULL,
   `TotalFollowing` int(11) NOT NULL,
   `TotalFollowers` int(11) NOT NULL,
-  `Password` int(11) NOT NULL,
+  `Password` varchar(11) NOT NULL,
   PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -119,8 +131,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`UserId`, `FullName`, `AccountType`, `TotalFollowing`, `TotalFollowers`, `Password`) VALUES
-('hendrik', 'Hendrik Prayogo', '1', 2, 2, 123),
-('mychaelgo', 'Mychael Christian Go', '1', 1, 1, 123);
+('haha', 'haha@haha', 0, 0, 0, 'haha'),
+('hendrik', 'Hendrik Prayogo', 1, 2, 2, '123'),
+('kwkw', 'kwkwkwkw', 0, 0, 0, 'kwkw'),
+('mychaelgo', 'Mychael Christian Go', 1, 1, 1, '123');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

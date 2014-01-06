@@ -9,20 +9,20 @@
         <!-- end of login-->
         <!--Register-->
         <h4>New to Opaque? Sign Up</h4>
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" method="post" action="controller/doRegister.jsp">
             <div class="form-group">
                 <div class="col-lg-12">
-                    <input type="text" class="form-control" id="inputName1" placeholder="Full Name">
+                    <input type="text" class="form-control" id="inputName1" name="inputName1" placeholder="Full Name">
                 </div>
             </div>
             <div class="form-group">
                 <div class=" col-lg-12">
-                    <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                    <input type="text" class="form-control" id="inputFullName1" name="inputFullName1" placeholder="Full Name">
                 </div>
             </div>
             <div class="form-group">
                 <div class=" col-lg-12">
-                    <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword1" name="inputPassword1" placeholder="Password">
                 </div>
             </div>
             <div class="form-group">
