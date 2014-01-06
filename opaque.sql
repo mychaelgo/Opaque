@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.5
+-- version 4.1.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 09, 2013 at 03:08 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: Jan 06, 2014 at 05:53 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -45,7 +45,15 @@ CREATE TABLE IF NOT EXISTS `following` (
   `UserId` varchar(50) NOT NULL,
   `FollowingUserId` varchar(50) NOT NULL,
   PRIMARY KEY (`FollowingId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `following`
+--
+
+INSERT INTO `following` (`FollowingId`, `UserId`, `FollowingUserId`) VALUES
+(1, 'A', 'B'),
+(2, 'C', 'B');
 
 -- --------------------------------------------------------
 
@@ -107,10 +115,10 @@ INSERT INTO `tweet` (`TweetId`, `UserId`, `Message`, `GeoCoordinates`, `IsRetwee
 CREATE TABLE IF NOT EXISTS `user` (
   `UserId` varchar(50) NOT NULL,
   `FullName` varchar(100) NOT NULL,
-  `AccountType` varchar(50) NOT NULL,
+  `AccountType` int(50) NOT NULL,
   `TotalFollowing` int(11) NOT NULL,
   `TotalFollowers` int(11) NOT NULL,
-  `Password` int(11) NOT NULL,
+  `Password` varchar(11) NOT NULL,
   PRIMARY KEY (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -119,8 +127,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`UserId`, `FullName`, `AccountType`, `TotalFollowing`, `TotalFollowers`, `Password`) VALUES
-('hendrik', 'Hendrik Prayogo', '1', 2, 2, 123),
-('mychaelgo', 'Mychael Christian Go', '1', 1, 1, 123);
+('haha', 'haha@haha', 0, 0, 0, 'haha'),
+('hendrik', 'Hendrik Prayogo', 1, 2, 2, '123'),
+('kwkw', 'kwkwkwkw', 0, 0, 0, 'kwkw'),
+('mychaelgo', 'Mychael Christian Go', 1, 1, 1, '123');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
