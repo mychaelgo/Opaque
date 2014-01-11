@@ -1,5 +1,13 @@
+ <head>
+            <script src="../js/jquery.js"></script>
+            <link rel="stylesheet" href="../css/bootstrap.css" />
+</head>
+
+
 <%@include file = "../connect.jsp"%>
-<div class="col-md-8" style="margin-top:15px;padding-left:0px">
+    
+    <body>
+<div class="col-md-12" style="margin-top:15px;padding-left:0px">
 	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
 		<h4><%=session.getAttribute("username")%>'s Post</h4>
 
@@ -8,11 +16,12 @@
         
 
         <%
-			String username = (String)session.getAttribute("username"); 
-		 	String query = "select * from tweet where UserId='"+username+"'";
+           int flag = 0;
+			String username = (String)session.getAttribute("username");
+		 	String query = "SELECT * FROM tweet tw LEFT JOIN following fw ON tw.UserId = fw.UserId LEFT JOIN user us ON us.UserID = tw.UserID WHERE FollowingUserID='"+username+"' OR tw.UserId = '"+username+"' ORDER BY TweetId ASC";
 		   	try{
 				rs = st.executeQuery(query); 
-				while(rs.next()){
+				while(rs.next() && flag < 20){
 		%>
 		
         <!--Post Tempalate -->
@@ -26,7 +35,7 @@
                 <div style="float:left">
 					<a href='index.jsp?p=profile&id=<%=rs.getString("UserId")%>' style="text-decoration:none">
 						<span class="count-profile">
-							Patrick Star
+							<%=rs.getString("FullName")%>
 						</span>
 						<span class="count-type" style="text-transform:inherit">
 							@<%=rs.getString("UserId")%>
@@ -52,6 +61,7 @@
 				</div>
 			</div>
 			<div style="clear:both"></div>
+                        <%flag++;%>
 		</div>
         <!--Post Tempalate -->
         
@@ -68,3 +78,5 @@
 
 	</div>
 </div>
+            
+            </body>
