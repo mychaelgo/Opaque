@@ -1,0 +1,26 @@
+Kevin Wijaya :
+-register user
+-post idea kalau user sudah login
+-Tampilan home dari user (isinya adalah post" dari orang yang di following , tampilkan 20 data saja)
+
+
+Hendrik :
+-get user post
+-get artwork list
+-get total post of user
+-get total artwork of user
+-get total following of user
+-get total follower of user
+NB : Buka halaman index.jsp?p=profile
+
+Wisnu :
+-change password
+-change profile information
+-change account information
+NB : buka halaman index.jsp?p=setting
+
+Andreas : 
+-
+
+Go :
+-out of the box (create html + doComment on the artwork post)
