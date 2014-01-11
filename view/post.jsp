@@ -4,8 +4,7 @@
 </head>
 
 
-<%@include file = "../connect.jsp"%>
-    
+
     <body>
 <div class="col-md-12" style="margin-top:15px;padding-left:0px">
 	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">

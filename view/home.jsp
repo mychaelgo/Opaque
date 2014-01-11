@@ -1,8 +1,11 @@
 <html>
     
+    <%@include file = "../connect.jsp"%>
+    
+    
     <head>
             <script src="../js/jquery.js"></script>
-            <link rel="stylesheet" href="../bootstrap.css" />
+            <link rel="stylesheet" href="../css/bootstrap.css" />
     </head>
     
     

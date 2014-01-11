@@ -168,6 +168,11 @@
                         
                         
                     </div>
+                                                
+                 <div class="col-md-12" style="padding-left:0px;background-color:white;margin-top:10px;border-radius:4px;padding-left:15px;">
+                   <%@ include file="writepost.jsp" %>
+                 </div>
+                                                
                 <div class="col-md-12" style="padding-left:0px;background-color:white;margin-top:10px;border-radius:4px;padding-left:15px;">
                    <%@ include file="post.jsp" %>
                  </div>
