@@ -8,8 +8,13 @@
     String isretweet = "n";
 	String username = (String)session.getAttribute("username");
 	String post = request.getParameter("isiPost");
+           
+    
+    java.util.Date date = new java.util.Date();
+    SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+    
 	
-	String query = "INSERT INTO tweet (UserID , Message, GeoCoordinates, IsRetweet, TotalRetweet, TimeStamp) VALUES ('"+username+"','"+post+"','"+geo+"','"+isretweet+"','0','2013-11-08 00:00:00.000000')";
+	String query = "INSERT INTO tweet (UserID , Message, GeoCoordinates, IsRetweet, TotalRetweet, TimeStamp) VALUES ('"+username+"','"+post+"','"+geo+"','"+isretweet+"','0','"+ft.format(date)+"')";
 	st.executeUpdate(query);
 	
 	connection.close();

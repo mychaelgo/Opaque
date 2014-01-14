@@ -49,14 +49,14 @@
 				<%=rs.getString("Message")%>
 				</div>
 
-				<div style="float:right;visibility:hidden" id="editpost-1">
-					<a data-toggle="modal" href="<span id=" postIdea "></span>">
+				<div style="float:right;" id="editpost-1">
+					<a data-toggle="modal" href="<span id=" postIdea "></span>
 						<span class="glyphicon glyphicon-screenshot"></span>Reply</a>&nbsp;&nbsp;
 					<a href="#" id="btndelete" onclick="deletepost('post-1')">
 						<span class="glyphicon glyphicon-trash"></span>Delete</a>&nbsp;&nbsp;
-					<!--
+					
 	    					<a href="#" id="btnfav"><span class="glyphicon glyphicon-star"></span> Favorite</a>
-	    					-->
+	    			
 				</div>
 			</div>
 			<div style="clear:both"></div>
