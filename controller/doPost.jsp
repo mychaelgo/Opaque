@@ -7,7 +7,7 @@
     String geo = "geo";
     String isretweet = "n";
 	String username = (String)session.getAttribute("username");
-	String post = request.getParameter("isiPost");
+	String post = request.getParameter("isipost");
            
     
     java.util.Date date = new java.util.Date();
@@ -19,7 +19,7 @@
 	
 	connection.close();
 	
-	response.sendRedirect("../view/home.jsp");
+	response.sendRedirect("../index.jsp");
 
 
 %>

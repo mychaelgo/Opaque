@@ -38,7 +38,6 @@
 			// Logged in
 	%>
 			<jsp:include page="view/navLogin.jsp" flush="true"/>
-			<jsp:include page="view/home.jsp" flush="true"/>
 	<%
 		}
 	%>
@@ -48,10 +47,13 @@
 		String path = "/view/";
 		p=path+p+".jsp";
 	
-		if(null == application.getResource(p)){
-			out.print("null");
+		if(application.getResource(p) == null){
+	   		out.print("homeeee");
+	%>
+		<jsp:include page="/view/home.jsp" flush="true"/>
+	<%
+	   	out.print("homeeee2");
 		}else{
-			out.flush();
 			out.print(p);
 	%>
 		<jsp:include page="<%=p%>" flush="true"/>
@@ -59,6 +61,46 @@
 		}	
 	%>
 
+        <!-- Modal Post Idea-->
+<div class="modal fade" id="postIdea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color:#DFE1E1;border-top-left-radius:4px;border-top-right-radius:4px;text-align:center;border-bottom:thin #D7D7D7 solid">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">What are you thinking now?</h4>
+			</div>
+			<div class="modal-body">
+                <form method = "POST" action = "controller/doPost.jsp">
+                    
+				<textarea style="overflow:hidden;height:100px;width:540px;outline:0" name="isipost"></textarea>
+				<div style="padding-top:10px;">
+                    
+                    
+					<div style="float:left">
+						<span class="btn btn-success fileinput-button" style="cursor:pointer">
+							<span class="glyphicon glyphicon-picture"></span>
+						</span>
+						<input type='file' style="width:40px;height:35px;margin-top:-35px;background-color:red;cursor:pointer;background-color:red;z-index:1;position:absolute;opacity:0" title="Upload Artwork" name='file' />
+
+					</div>
+					<div style="float:right">
+						<button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Post</button>
+                        
+                        </form>
+                        
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+        
 	<script src="js/jquery.js"></script>
 	<script src="js/opaque.js"></script>
 	<script src="js/bootstrap.min.js"></script>

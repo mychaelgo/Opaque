@@ -169,16 +169,12 @@
                         
                     </div>
                                                 
-                 <div class="col-md-12" style="padding-left:0px;background-color:white;margin-top:10px;border-radius:4px;padding-left:15px;">
-                   <%@ include file="writepost.jsp" %>
-                 </div>
+               
                                                 
-                <div class="col-md-12" style="padding-left:0px;background-color:white;margin-top:10px;border-radius:4px;padding-left:15px;">
-                   <%@ include file="post.jsp" %>
-                 </div>
+             
                                         
                                                 
-	</div>
+
 	<!--Tab-->
 	<%
 		String tab = request.getParameter("tab");	
@@ -203,38 +199,7 @@
         
         
 
-<!-- Modal Post Idea-->
-<div class="modal fade" id="postIdea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header" style="background-color:#DFE1E1;border-top-left-radius:4px;border-top-right-radius:4px;text-align:center;border-bottom:thin #D7D7D7 solid">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">What are you thinking now?</h4>
-			</div>
-			<div class="modal-body">
-				<textarea style="overflow:hidden;height:100px;width:540px;outline:0"></textarea>
-				<div style="padding-top:10px;">
-					<div style="float:left">
-						<span class="btn btn-success fileinput-button" style="cursor:pointer">
-							<span class="glyphicon glyphicon-picture"></span>
-						</span>
-						<input type='file' style="width:40px;height:35px;margin-top:-35px;background-color:red;cursor:pointer;background-color:red;z-index:1;position:absolute;opacity:0" title="Upload Artwork" name='file' />
 
-					</div>
-					<div style="float:right">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Reply Post</button>
-					</div>
-					<div style="clear:both"></div>
-				</div>
-			</div>
-
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
         
         
         </body>

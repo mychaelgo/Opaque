@@ -1,14 +1,6 @@
- <head>
-            <script src="../js/jquery.js"></script>
-            <link rel="stylesheet" href="../css/bootstrap.css" />
-</head>
+<%@include file="../connect.jsp"%>
 
-
-
-    <body>
-<div class="col-md-12" style="margin-top:15px;padding-left:0px">
-	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
-		<h4><%=session.getAttribute("username")%>'s Post</h4>
+<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
 
 	</div>
 	<div style="background-color:white;">
@@ -17,10 +9,9 @@
         <%
            int flag = 0;
 			String username = (String)session.getAttribute("username");
-		 	String query = "SELECT * FROM tweet tw LEFT JOIN following fw ON tw.UserId = fw.UserId LEFT JOIN user us ON us.UserID = tw.UserID WHERE FollowingUserID='"+username+"' OR tw.UserId = '"+username+"' ORDER BY TweetId ASC";
-		   	try{
+		 	String query = "SELECT * FROM tweet tw LEFT JOIN following fw ON tw.UserId = fw.UserId LEFT JOIN user us ON us.UserID = tw.UserID WHERE FollowingUserID='"+username+"' OR tw.UserId = '"+username+"' ORDER BY TweetId DESC";
 				rs = st.executeQuery(query); 
-				while(rs.next() && flag < 20){
+				while(rs.next()){
 		%>
 		
         <!--Post Tempalate -->
@@ -50,9 +41,9 @@
 				</div>
 
 				<div style="float:right;" id="editpost-1">
-					<a data-toggle="modal" href="<span id=" postIdea "></span>
+					<a data-toggle="modal" href="#postIdea"></span>
 						<span class="glyphicon glyphicon-screenshot"></span>Reply</a>&nbsp;&nbsp;
-					<a href="#" id="btndelete" onclick="deletepost('post-1')">
+					<a href="controller/doDeletePost.jsp" id="btndelete" onclick="deletepost('post-1')">
 						<span class="glyphicon glyphicon-trash"></span>Delete</a>&nbsp;&nbsp;
 					
 	    					<a href="#" id="btnfav"><span class="glyphicon glyphicon-star"></span> Favorite</a>
@@ -60,22 +51,12 @@
 				</div>
 			</div>
 			<div style="clear:both"></div>
-                        <%flag++;%>
 		</div>
         <!--Post Tempalate -->
         
         <%
-		   		}	
-			}catch(Exception e){
-				out.print(e);
-			} 	
+		   flag++;
+		   }	
         %>
 
 		<div style="clear:both"></div>
-	</div>
-	<div style="padding:15px;background-color:white">
-
-	</div>
-</div>
-            
-            </body>
