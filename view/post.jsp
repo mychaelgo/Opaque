@@ -7,11 +7,13 @@
         
 
         <%
+           
            int flag = 0;
 			String username = (String)session.getAttribute("username");
-		 	String query = "SELECT * FROM tweet tw LEFT JOIN following fw ON tw.UserId = fw.UserId LEFT JOIN user us ON us.UserID = tw.UserID WHERE FollowingUserID='"+username+"' OR tw.UserId = '"+username+"' ORDER BY TweetId DESC";
+		 	String query = "SELECT * FROM tweet tw LEFT JOIN user us ON us.UserID = tw.UserID, (SELECT * FROM following WHERE UserId = 'kwkw') AS X WHERE tw.UserId = X.UserId OR tw.UserId = X.FollowingUserId ORDER BY TweetId ASC";
 				rs = st.executeQuery(query); 
-				while(rs.next()){
+				while(rs.next() && flag < 20){
+           String userid = rs.getString("UserID");
 		%>
 		
         <!--Post Tempalate -->
@@ -28,7 +30,7 @@
 							<%=rs.getString("FullName")%>
 						</span>
 						<span class="count-type" style="text-transform:inherit">
-							@<%=rs.getString("UserId")%>
+							@<%=userid%>
 						</span>
 					</a>
 				</div>
@@ -39,16 +41,36 @@
 				<div>
 				<%=rs.getString("Message")%>
 				</div>
-
+                    
+                <% if(userid.equals(username)){    %>
+                    
 				<div style="float:right;" id="editpost-1">
 					<a data-toggle="modal" href="#postIdea"></span>
 						<span class="glyphicon glyphicon-screenshot"></span>Reply</a>&nbsp;&nbsp;
-					<a href="controller/doDeletePost.jsp" id="btndelete" onclick="deletepost('post-1')">
+					<a href="controller/doDeletePost.jsp?TweetID=<%=rs.getString("TweetID")%>" id="btndelete" onclick="deletepost('post-1')">
 						<span class="glyphicon glyphicon-trash"></span>Delete</a>&nbsp;&nbsp;
 					
 	    					<a href="#" id="btnfav"><span class="glyphicon glyphicon-star"></span> Favorite</a>
 	    			
 				</div>
+                        
+                        <%}
+                        
+                        else{
+                        %>
+                        
+                            <div style="float:right;" id="editpost-1">
+					<a data-toggle="modal" href="#postIdea"></span>
+						<span class="glyphicon glyphicon-screenshot"></span>Reply</a>&nbsp;&nbsp;
+					<a href="#" id="btnfav"><span class="glyphicon glyphicon-star"></span> Favorite</a>
+	    			
+				</div>
+                    <%}%>
+                            
+                            
+                            
+                            
+                        
 			</div>
 			<div style="clear:both"></div>
 		</div>

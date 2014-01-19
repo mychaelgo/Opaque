@@ -1,8 +1,33 @@
-<div class="col-md-8" style="margin-top:15px;padding-left:0px">
+<%@ page import="java.util.*,java.sql.*,java.text.*" %>
+<%@ include file="../connect.jsp" %>
+
+    
+     <%           
+			String username = (String)session.getAttribute("username");
+		 	String query = "SELECT * FROM user WHERE UserId ='"+username+"'";
+				rs = st.executeQuery(query); 
+				while(rs.next()){
+		%>
+    
+    
+<div class="col-md-12" style="margin-top:15px;padding-left:0px">
 	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
-		<h4>Patrick Star's Following List</h4>
+		<h4><%=rs.getString("FullName")%>'s Following List</h4>
+        
+          
 
 	</div>
+            
+             <%
+           }
+           %>
+             
+     <%
+		 	String query1 = "SELECT DISTINCT x.* FROM (SELECT * FROM user u )as x, following fw WHERE fw.FollowingUserId = x.UserId and fw.userid ='"+username+"'";
+				rs = st2.executeQuery(query1); 
+				while(rs.next()){
+		%>
+    
 	<div style="background-color:white;">
 		<div class="col-md-12" style="border-bottom:thin #CFCFCF solid;padding-top:10px;padding-bottom:10px">
 			<a href="profile.html" style="text-decoration:none">
@@ -14,17 +39,17 @@
 				<div style="float:left">
 					<a href="profile.html" style="text-decoration:none">
 						<span class="count-profile">
-							Nick
+							<%=rs.getString("x.FullName")%>
 						</span>
 						<span class="count-type" style="text-transform:inherit">
-							@patrickstar
+							@<%=rs.getString("x.UserId")%>
 						</span>
 					</a>
 				</div>
 				<div style="clear:both"></div>
 				<div>
 					<div style="float:left">
-						Quote
+					
 					</div>
 
 					<div style="float:right;margin-top:-10px">
@@ -36,10 +61,10 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li>
-									<a data-toggle="modal" href="#myModal">Tweet Nickleo</a>
+									<a data-toggle="modal" href="#myModal">Tweet <%=rs.getString("FullName")%></a>
 								</li>
 								<li>
-									<a href="#">Unfollow Nick</a>
+									<a href="#">Unfollow <%=rs.getString("FullName")%></a>
 								</li>
 							</ul>
 						</div>
@@ -67,7 +92,11 @@
 		</div>
 		<div style="clear:both"></div>
 	</div>
-	<div style="padding:15px;background-color:white">
-
-	</div>
+                
+                   <%
+           }
+           %>
 </div>
+                 
+                 
+         
