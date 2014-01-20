@@ -1,4 +1,6 @@
 <!-- Fixed navbar -->
+<%String p = request.getParameter("p");	%>
+<%String txtsearch = request.getParameter("txtsearch");	%>
 <div class="navbar navbar-inverse navbar-fixed-top" style="font-size:small;">
 	<div class="container">
 		<div class="navbar-header">
@@ -30,8 +32,10 @@
 			<ul class="nav navbar-nav navbar-right">
 
 				<li>
-					<form action="search.jsp" method="get">
-						<input name="txtsearch" placeholder="Search" type="text" style="border-radius:12px;background-color:#EBEBEB;margin-top:8px;padding:2px 18px;outline:0;box-shadow: 2px 2px 6px #e4e4e4 inset;" />
+					<form action="index.jsp?p=search" method="post">
+					
+						<input name="txtsearch" <%if(txtsearch==null||txtsearch=="")%> placeholder="Search" <%else%>placeholder="<%=txtsearch%>" type="text" style="border-radius:12px;background-color:#EBEBEB;margin-top:8px;padding:2px 18px;outline:0;box-shadow: 2px 2px 6px #e4e4e4 inset;" />
+						
 						<button type="submit" style="border:0;position:relative;background:0;margin-left:-45px;outline:0">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>

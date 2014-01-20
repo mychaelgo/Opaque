@@ -44,6 +44,12 @@
 	
 	<%
 		String p = request.getParameter("p");	
+		String txtsearch=request.getParameter("txtsearch");	
+	
+	%>
+	   
+		
+	<%
 		String path = "/view/";
 		p=path+p+".jsp";
 	
@@ -57,6 +63,7 @@
 			out.print(p);
 	%>
 		<jsp:include page="<%=p%>" flush="true"/>
+	
 	<%
 		}	
 	%>

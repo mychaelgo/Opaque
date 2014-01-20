@@ -1,29 +1,21 @@
 <%@ page import="java.util.*,java.sql.*,java.text.*" %>
 <%@ include file="../connect.jsp" %>
 
-    
-     <%           
-			String username = (String)session.getAttribute("username");
-		 	String query = "SELECT * FROM user WHERE UserId ='"+username+"'";
-				rs = st.executeQuery(query); 
-				while(rs.next()){
-		%>
-    
+<%String txtsearch = request.getParameter("txtsearch");	%>
+
     
 <div class="col-md-12" style="margin-top:15px;padding-left:0px">
 	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
-		<h4><%=rs.getString("FullName")%>'s Following List</h4>
+		<h4>Search People for <%=txtsearch%> </h4>
         
           
 
 	</div>
             
-             <%
-           }
-           %>
+
              
      <%
-		 	String query1 = "SELECT DISTINCT x.* FROM (SELECT * FROM user u )as x, following fw WHERE fw.FollowingUserId = x.UserId and fw.userid ='"+username+"'";
+		 	String query1 = "SELECT * FROM user WHERE fullname like '%"+txtsearch+"%' ";
 				rs = st2.executeQuery(query1); 
 				while(rs.next()){
 		%>
@@ -39,10 +31,10 @@
 				<div style="float:left">
 					<a href="profile.html" style="text-decoration:none">
 						<span class="count-profile">
-							<%=rs.getString("x.FullName")%>
+							<%=rs.getString("FullName")%>
 						</span>
 						<span class="count-type" style="text-transform:inherit">
-							@<%=rs.getString("x.UserId")%>
+							@<%=rs.getString("UserId")%>
 						</span>
 					</a>
 				</div>

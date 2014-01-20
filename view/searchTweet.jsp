@@ -1,23 +1,27 @@
 <%@include file="../connect.jsp"%>
-
+      <%String txtsearch = request.getParameter("txtsearch");	%>
 <div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
 
 	</div>
 	<div style="background-color:white;">
         
-
+	<div style="background-color:white;padding:5px 15px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom:thin #CFCFCF solid">
+		<h4>Search Results for <%=txtsearch%> </h4>
+		</div>
         <%
-           
+        
            int flag = 0;
 			String username = (String)session.getAttribute("username");
-		 	String query = "SELECT * FROM tweet tw LEFT JOIN user us ON us.UserID = tw.UserID, (SELECT * FROM following WHERE UserId = 'kwkw') AS X WHERE tw.UserId = X.UserId OR tw.UserId = X.FollowingUserId ORDER BY TweetId ASC";
+		 	String query = "SELECT * FROM tweet tw LEFT JOIN user us ON us.UserID = tw.UserID WHERE message like '%"+txtsearch+"%' ";
 				rs = st.executeQuery(query); 
 				while(rs.next() && flag < 20){
            String userid = rs.getString("UserID");
 		%>
-		
+				
         <!--Post Tempalate -->
+	
 		<div class="col-md-12" style="border-bottom:thin #CFCFCF solid;padding-top:10px;padding-bottom:10px" id="post-1" >
+
 			<a href="profile.jsp" style="text-decoration:none">
 				<div style="float:left">
 					<img src="img example/H1vWl.png" width="50px" height="50px" style="background:#fff" class="img-rounded border-img" />
