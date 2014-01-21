@@ -28,7 +28,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="text-center text-danger" colspan="3">
+							<td class="text-center text-info" style="font-weight:bolder;" colspan="3">
 								<%
 									String result = request.getParameter("result");
 									if(result!=null){
