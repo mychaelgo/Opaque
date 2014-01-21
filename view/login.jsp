@@ -11,7 +11,11 @@
         </div>
     </div>
     <!-- Alert ke User-->
-    <%= request.getParameter("err")%>
+    <%
+        if(request.getParameter("err") != null){
+            out.print(request.getParameter("err"));
+        }   
+    %>
         
     <div class="form-group">
         <div class="col-lg-12">

@@ -28,6 +28,9 @@
 </head>
 <body style="background-image:url('img example/snsd.jpg');background-size:100% 100%;background-attachment:fixed">
 	<%
+       String p = request.getParameter("p");	
+		String txtsearch=request.getParameter("txtsearch");	
+	
 		if(session.getAttribute("username") == null){
 			//Not Login
 	%>
@@ -36,38 +39,23 @@
 	<%			
 		}else{
 			// Logged in
+    %>
+            <jsp:include page="view/navLogin.jsp" flush="true"/>
+    <%
+            String path = "/view/";
+            p=path+p+".jsp";
+            if(application.getResource(p) == null){
 	%>
-			<jsp:include page="view/navLogin.jsp" flush="true"/>
+			<jsp:include page="/view/home.jsp" flush="true"/>
 	<%
-		}
+		    }else{
+       %>
+    
+       <jsp:include page="<%=p%>" flush="true"/>
+     <%  
+            }
+        }
 	%>
-	
-	<%
-		String p = request.getParameter("p");	
-		String txtsearch=request.getParameter("txtsearch");	
-	
-	%>
-	   
-		
-	<%
-		String path = "/view/";
-		p=path+p+".jsp";
-	
-		if(application.getResource(p) == null){
-	   		out.print("homeeee");
-	%>
-		<jsp:include page="/view/home.jsp" flush="true"/>
-	<%
-	   	out.print("homeeee2");
-		}else{
-			out.print(p);
-	%>
-		<jsp:include page="<%=p%>" flush="true"/>
-	
-	<%
-		}	
-	%>
-
         <!-- Modal Post Idea-->
 <div class="modal fade" id="postIdea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">

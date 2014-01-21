@@ -1,9 +1,10 @@
 <!--Katherine-->
-<div class="col-md-12 container" style="margin-top:40px;background:rgba(255,255,255,0.5);padding:20px 5px">
-    <!-- <div class="gambar">
-	</div>
-	-->
-    <div class="col-md-3 col-md-offset-8">
+<div class="col-md-12 container" style="margin-top:40px;background:rgba(255,255,255,0.8);padding:20px 5px">
+
+    <div class="col-md-3 col-md-offset-1">
+            <img src="img example/snsd-home.jpg"  width="600px">
+    </div>
+    <div class="col-md-3 col-md-offset-5">
         <!--login-->
         <jsp:include page="../view/login.jsp" flush="true" />
         <!-- end of login-->
@@ -12,7 +13,7 @@
         <form class="form-horizontal" role="form" method="post" action="controller/doRegister.jsp">
             <div class="form-group">
                 <div class="col-lg-12">
-                    <input type="text" class="form-control" id="inputName1" name="inputName1" placeholder="Full Name">
+                    <input type="text" class="form-control" id="inputName1" name="inputName1" placeholder="Username">
                 </div>
             </div>
             <div class="form-group">
